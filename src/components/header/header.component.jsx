@@ -5,7 +5,15 @@ import { auth } from '../../firebase/firebase.utils';
 
 import { ReactComponent as Logo } from '../../assets/crown.svg';
 
+import firebase from 'firebase/app';
+import 'firebase/firestore';
 import './header.styles.scss';
+
+const firestore = firebase.firestore();
+
+firestore.doc('/users/bsjZGdUj9PWrBXphhOQN/cartItems/zHVRVojg8UtfvrWgu4it');
+firestore.collection('/users/bsjZGdUj9PWrBXphhOQN/cartItems/');
+
 
 const Header = ({ currentUser }) => (
     <div className='header'>
