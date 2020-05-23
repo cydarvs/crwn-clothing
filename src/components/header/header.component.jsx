@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+// redux connect
+import { connect } from 'react-redux';
 
 import { auth } from '../../firebase/firebase.utils';
-
 import { ReactComponent as Logo } from '../../assets/crown.svg';
-
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import './header.styles.scss';
@@ -13,7 +13,6 @@ const firestore = firebase.firestore();
 
 firestore.doc('/users/bsjZGdUj9PWrBXphhOQN/cartItems/zHVRVojg8UtfvrWgu4it');
 firestore.collection('/users/bsjZGdUj9PWrBXphhOQN/cartItems/');
-
 
 const Header = ({ currentUser }) => (
     <div className='header'>
@@ -41,4 +40,8 @@ const Header = ({ currentUser }) => (
     </div>
 );
 
-export default Header;
+const mapStateToProps = state => ({
+    currentUser: state.user.currentUser
+})
+
+export default connect(mapStateToProps)(Header);
